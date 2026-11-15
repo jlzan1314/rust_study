@@ -1,6 +1,6 @@
 # Rust 的 Package crate 和模块
 
-结合当前 `rust_study` 项目，说明 Package、crate、模块、路径和 `use` 的关系，并展示二进制程序如何调用库。
+结合当前 `rust_study` 项目，说明 Package、crate、模块、路径和 `use` 的关系。每个学习模块都有独立的二进制入口，可以单独运行；公共源码由库 crate 组织。
 
 Package 是 Cargo 管理的项目单位；crate 是 Rust 的编译单元；模块组织 crate 内的代码；路径定位具体的项；`use` 将路径对应的名字引入当前作用域。
 
@@ -12,21 +12,45 @@ rust_study/                    ← 一个 Package
 └── src/
     ├── lib.rs                 ← 库 crate 的根模块
     ├── math.rs                ← 库中的 math 模块
-    ├── main.rs                ← 二进制 crate 的根模块
-    └── enums_and_matching/
-        └── mod.rs             ← 二进制中的枚举与模式匹配模块
+    ├── main.rs                ← 默认二进制入口，只显示运行命令
+    ├── ownership/mod.rs       ← 所有权模块
+    ├── borrowing/mod.rs       ← 引用与借用模块
+    ├── slice/mod.rs           ← 字符串切片模块
+    ├── object_oriented/mod.rs ← 封装与 trait 模块
+    ├── structs/mod.rs         ← 结构体模块
+    ├── enums_and_matching/mod.rs ← 枚举与模式匹配模块
+    └── bin/                   ← 每个文件都是独立的二进制 crate 入口
+        ├── ownership.rs
+        ├── borrowing.rs
+        ├── slice.rs
+        ├── object_oriented.rs
+        ├── structs.rs
+        ├── enums_and_matching.rs
+        └── math.rs
 ```
 
-上面只列出与本说明相关的文件。入口和模块之间的关系是：
+上面只列出与本说明相关的文件。当前 Package 包含一个库 crate 和八个二进制 crate，其中七个用于学习示例，一个用于展示运行命令：
 
 ```text
 Package rust_study
 ├── 库 crate，根模块为 lib.rs
-│   └── math 模块，来自 math.rs
-└── 二进制 crate，根模块为 main.rs
-    └── enums_and_matching 模块，来自 enums_and_matching/mod.rs
+│   ├── math
+│   ├── ownership
+│   ├── borrowing
+│   ├── slice
+│   ├── object_oriented
+│   ├── structs
+│   └── enums_and_matching
+├── 二进制 rust_study，入口为 src/main.rs
+├── 二进制 ownership，入口为 src/bin/ownership.rs
+├── 二进制 borrowing，入口为 src/bin/borrowing.rs
+├── 二进制 slice，入口为 src/bin/slice.rs
+├── 二进制 object_oriented，入口为 src/bin/object_oriented.rs
+├── 二进制 structs，入口为 src/bin/structs.rs
+├── 二进制 enums_and_matching，入口为 src/bin/enums_and_matching.rs
+└── 二进制 math，入口为 src/bin/math.rs
 
-二进制 crate 通过 rust_study::math::add 调用库 crate。
+每个学习入口只调用对应的库模块，不会顺带运行其他学习模块。
 ```
 
 `lib.rs` 和 `main.rs` 虽然位于同一个 `src` 目录，却是两个独立 crate 的入口。
@@ -37,12 +61,14 @@ Package rust_study
 |---|---|---|
 | Package | 由 Cargo 管理构建、依赖、测试和发布 | 包含 `Cargo.toml` 的 `rust_study` 项目 |
 | 库 crate | 提供供其他 crate 调用的功能 | `src/lib.rs` 及其声明的模块 |
-| 二进制 crate | 生成可以运行的程序 | `src/main.rs` 及其声明的模块 |
+| 二进制 crate | 生成可以运行的程序 | `src/main.rs`、`src/bin/*.rs` 各自对应一个 crate |
 | 模块 | 在一个 crate 内组织代码并形成可见性边界 | `math`、`enums_and_matching` |
 
 一个 Package 最多包含一个库 crate，可以包含多个二进制 crate，至少需要有一个 crate。额外的二进制可以放在 `src/bin/` 下，例如 `src/bin/admin.rs`。
 
-Cargo 默认识别 `src/lib.rs` 和 `src/main.rs`，当前项目不需要额外配置 `[lib]` 或 `[[bin]]`。本项目的库 crate 名称为 `rust_study`，与 `Cargo.toml` 中的包名相同。
+Cargo 默认识别 `src/lib.rs`、`src/main.rs` 和 `src/bin/*.rs`，当前项目不需要额外配置 `[lib]` 或 `[[bin]]`。本项目的库 crate 名称为 `rust_study`，与 `Cargo.toml` 中的包名相同。
+
+`src/bin/ownership.rs` 中虽然可以调用 `rust_study::ownership`，但这两者不是同一个 crate：前者是二进制入口，后者是库中的模块。
 
 ## 库 crate 示例
 
@@ -88,9 +114,9 @@ pub fn add(left: i32, right: i32) -> i32 {
 
 这里的 `pub` 公开函数。其他 crate 要通过 `rust_study::math::add` 访问它，路径上的 `math` 模块和 `add` 函数都需要公开。
 
-### 在 main.rs 中调用库
+### 在二进制入口中调用库
 
-源码：[src/main.rs](../src/main.rs)。下面展示与库调用有关的部分：
+源码：[src/bin/math.rs](../src/bin/math.rs)：
 
 ```rust
 use rust_study::math::add;
@@ -108,6 +134,16 @@ rust_study :: math :: add
 ```
 
 同一个 Package 中的二进制 crate 可以直接使用该库，不需要在 `[dependencies]` 中添加对自身 Package 的依赖。
+
+其他二进制入口保持简短，只负责启动自己的学习模块。例如 [src/bin/ownership.rs](../src/bin/ownership.rs)：
+
+```rust
+fn main() {
+    rust_study::ownership::run();
+}
+```
+
+学习代码仍然保存在 `src/ownership/mod.rs` 中，由 `src/lib.rs` 的 `pub mod ownership;` 声明。切换学习主题时，直接选择不同二进制运行即可。
 
 ## mod use 和 pub 的区别
 
@@ -192,7 +228,7 @@ fn main() {
 10 + 20 = 30
 ```
 
-## 运行和查看 API 文档
+## 按模块运行
 
 在当前 `rust_study` 项目根目录运行：
 
@@ -200,13 +236,63 @@ fn main() {
 cargo run
 ```
 
-第一行输出是：
+默认只显示各个模块的运行命令，不执行学习示例。`Cargo.toml` 中的配置明确了默认运行目标，避免多个二进制存在时无法判断运行哪一个：
+
+```toml
+[package]
+name = "rust_study"
+version = "0.1.0"
+edition = "2024"
+default-run = "rust_study"
+```
+
+根据需要，选择一个模块单独运行：
+
+| 学习内容 | 命令 |
+|---|---|
+| 所有权 | `cargo run --bin ownership` |
+| 引用与借用 | `cargo run --bin borrowing` |
+| 字符串切片 | `cargo run --bin slice` |
+| 封装与 trait | `cargo run --bin object_oriented` |
+| 结构体 | `cargo run --bin structs` |
+| 枚举与模式匹配 | `cargo run --bin enums_and_matching` |
+| 库 crate 调用 | `cargo run --bin math` |
+
+例如运行库调用示例：
+
+```bash
+cargo run --bin math
+```
+
+输出：
 
 ```text
 库 crate 示例：2 + 3 = 5
 ```
 
-随后继续执行 `main.rs` 中的枚举和模式匹配示例。
+一次构建全部二进制，但不执行：
+
+```bash
+cargo build --bins
+```
+
+## 添加新的学习模块
+
+以新增 `collections` 模块为例：
+
+1. 创建 `src/collections/mod.rs`，在其中定义 `pub fn run()` 并编写示例。
+2. 在 `src/lib.rs` 中添加 `pub mod collections;`，让二进制可以访问该模块。
+3. 创建 `src/bin/collections.rs` 作为独立入口：
+
+```rust
+fn main() {
+    rust_study::collections::run();
+}
+```
+
+然后运行 `cargo run --bin collections`。Cargo 会自动发现新入口，无需增加 `[[bin]]` 配置。可以在 `src/main.rs` 中补充一行运行提示，方便查阅。
+
+## 构建库和查看 API 文档
 
 只构建库，不运行二进制程序：
 

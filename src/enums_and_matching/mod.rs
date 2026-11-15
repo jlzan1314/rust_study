@@ -2,7 +2,8 @@
 //! 参考：https://rustwiki.org/zh-CN/book/ch06-00-enums.html
 //!
 //! 阅读顺序：定义枚举 → match → if let → 实际场景。
-//! main.rs 调用本模块的 run()，执行 cargo run 即可查看输入和输出。
+//! src/bin/enums_and_matching.rs 调用本模块的 run()。
+//! 执行 cargo run --bin enums_and_matching 即可查看输入和输出。
 
 // Debug 让 println!("{value:?}") 可以打印枚举成员及其关联数据。
 #[derive(Debug)]
