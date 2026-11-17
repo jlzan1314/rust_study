@@ -274,9 +274,11 @@ default-run = "rust_study"
 | 动态数组 Vec | `cargo run --bin vectors` |
 | 字符串与 UTF-8 | `cargo run --bin strings` |
 | 哈希表与词频统计 | `cargo run --bin hash_maps` |
+| 错误处理 | `cargo run --bin error_handling` |
 | 库 crate 调用 | `cargo run --bin math` |
 
 集合示例的源码位置和重点说明见 [常见集合学习示例](collections.md)。
+错误处理示例的源码位置和重点说明见 [错误处理学习示例](error_handling.md)。
 
 例如运行库调用示例：
 
