@@ -19,6 +19,11 @@ rust_study/                    ← 一个 Package
     ├── object_oriented/mod.rs ← 封装与 trait 模块
     ├── structs/mod.rs         ← 结构体模块
     ├── enums_and_matching/mod.rs ← 枚举与模式匹配模块
+    ├── collections/           ← 常见集合模块
+    │   ├── mod.rs            ← 声明三个集合子模块
+    │   ├── vectors.rs        ← Vec 动态数组
+    │   ├── strings.rs        ← String 与 UTF-8
+    │   └── hash_maps.rs      ← HashMap 键值映射
     └── bin/                   ← 每个文件都是独立的二进制 crate 入口
         ├── ownership.rs
         ├── borrowing.rs
@@ -26,10 +31,13 @@ rust_study/                    ← 一个 Package
         ├── object_oriented.rs
         ├── structs.rs
         ├── enums_and_matching.rs
+        ├── vectors.rs
+        ├── strings.rs
+        ├── hash_maps.rs
         └── math.rs
 ```
 
-上面只列出与本说明相关的文件。当前 Package 包含一个库 crate 和八个二进制 crate，其中七个用于学习示例，一个用于展示运行命令：
+上面只列出与本说明相关的文件。当前 Package 包含一个库 crate 和多个二进制 crate，各学习主题单独运行，默认入口用于展示运行命令：
 
 ```text
 Package rust_study
@@ -40,7 +48,11 @@ Package rust_study
 │   ├── slice
 │   ├── object_oriented
 │   ├── structs
-│   └── enums_and_matching
+│   ├── enums_and_matching
+│   └── collections
+│       ├── vectors
+│       ├── strings
+│       └── hash_maps
 ├── 二进制 rust_study，入口为 src/main.rs
 ├── 二进制 ownership，入口为 src/bin/ownership.rs
 ├── 二进制 borrowing，入口为 src/bin/borrowing.rs
@@ -48,6 +60,9 @@ Package rust_study
 ├── 二进制 object_oriented，入口为 src/bin/object_oriented.rs
 ├── 二进制 structs，入口为 src/bin/structs.rs
 ├── 二进制 enums_and_matching，入口为 src/bin/enums_and_matching.rs
+├── 二进制 vectors，入口为 src/bin/vectors.rs
+├── 二进制 strings，入口为 src/bin/strings.rs
+├── 二进制 hash_maps，入口为 src/bin/hash_maps.rs
 └── 二进制 math，入口为 src/bin/math.rs
 
 每个学习入口只调用对应的库模块，不会顺带运行其他学习模块。
@@ -256,7 +271,12 @@ default-run = "rust_study"
 | 封装与 trait | `cargo run --bin object_oriented` |
 | 结构体 | `cargo run --bin structs` |
 | 枚举与模式匹配 | `cargo run --bin enums_and_matching` |
+| 动态数组 Vec | `cargo run --bin vectors` |
+| 字符串与 UTF-8 | `cargo run --bin strings` |
+| 哈希表与词频统计 | `cargo run --bin hash_maps` |
 | 库 crate 调用 | `cargo run --bin math` |
+
+集合示例的源码位置和重点说明见 [常见集合学习示例](collections.md)。
 
 例如运行库调用示例：
 
@@ -278,19 +298,19 @@ cargo build --bins
 
 ## 添加新的学习模块
 
-以新增 `collections` 模块为例：
+以新增 `error_handling` 模块为例：
 
-1. 创建 `src/collections/mod.rs`，在其中定义 `pub fn run()` 并编写示例。
-2. 在 `src/lib.rs` 中添加 `pub mod collections;`，让二进制可以访问该模块。
-3. 创建 `src/bin/collections.rs` 作为独立入口：
+1. 创建 `src/error_handling/mod.rs`，在其中定义 `pub fn run()` 并编写示例。
+2. 在 `src/lib.rs` 中添加 `pub mod error_handling;`，让二进制可以访问该模块。
+3. 创建 `src/bin/error_handling.rs` 作为独立入口：
 
 ```rust
 fn main() {
-    rust_study::collections::run();
+    rust_study::error_handling::run();
 }
 ```
 
-然后运行 `cargo run --bin collections`。Cargo 会自动发现新入口，无需增加 `[[bin]]` 配置。可以在 `src/main.rs` 中补充一行运行提示，方便查阅。
+然后运行 `cargo run --bin error_handling`。Cargo 会自动发现新入口，无需增加 `[[bin]]` 配置。可以在 `src/main.rs` 中补充一行运行提示，方便查阅。
 
 ## 构建库和查看 API 文档
 

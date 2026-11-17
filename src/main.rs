@@ -8,5 +8,8 @@ fn main() {
     println!("面向对象：     cargo run --bin object_oriented");
     println!("结构体：       cargo run --bin structs");
     println!("枚举与匹配：   cargo run --bin enums_and_matching");
+    println!("动态数组 Vec： cargo run --bin vectors");
+    println!("字符串 UTF-8： cargo run --bin strings");
+    println!("哈希表：       cargo run --bin hash_maps");
     println!("库 crate 调用：cargo run --bin math");
 }
