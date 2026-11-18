@@ -14,5 +14,6 @@ fn main() {
     println!("错误处理：     cargo run --bin error_handling");
     println!("泛型与生命周期：cargo run --bin generics");
     println!("编写自动化测试：cargo test --lib testing::tests");
+    println!("I/O 命令行项目：cargo run --bin minigrep -- to docs/poem.txt");
     println!("库 crate 调用：cargo run --bin math");
 }
