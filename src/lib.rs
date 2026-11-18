@@ -16,3 +16,4 @@ pub mod object_oriented;
 pub mod ownership;
 pub mod slice;
 pub mod structs;
+pub mod testing;
