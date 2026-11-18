@@ -10,6 +10,7 @@ pub mod borrowing;
 pub mod collections;
 pub mod enums_and_matching;
 pub mod error_handling;
+pub mod generics;
 pub mod math;
 pub mod object_oriented;
 pub mod ownership;

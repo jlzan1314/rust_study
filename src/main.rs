@@ -12,5 +12,6 @@ fn main() {
     println!("字符串 UTF-8： cargo run --bin strings");
     println!("哈希表：       cargo run --bin hash_maps");
     println!("错误处理：     cargo run --bin error_handling");
+    println!("泛型与生命周期：cargo run --bin generics");
     println!("库 crate 调用：cargo run --bin math");
 }

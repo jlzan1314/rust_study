@@ -275,10 +275,12 @@ default-run = "rust_study"
 | 字符串与 UTF-8 | `cargo run --bin strings` |
 | 哈希表与词频统计 | `cargo run --bin hash_maps` |
 | 错误处理 | `cargo run --bin error_handling` |
+| 泛型、trait 与生命周期 | `cargo run --bin generics` |
 | 库 crate 调用 | `cargo run --bin math` |
 
 集合示例的源码位置和重点说明见 [常见集合学习示例](collections.md)。
 错误处理示例的源码位置和重点说明见 [错误处理学习示例](error_handling.md)。
+第 10 章示例见 [泛型、trait 和生命周期](generics.md)。
 
 例如运行库调用示例：
 
