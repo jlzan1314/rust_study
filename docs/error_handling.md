@@ -1,6 +1,6 @@
 # 错误处理学习示例
 
-参考 [Rust 程序设计语言第 9 章](https://rustwiki.org/zh-CN/book/ch09-00-error-handling.html)。
+参考 [Rust 程序设计语言第 9 章](book/ch09-00-error-handling.md)。
 源码与中文注释见 [src/error_handling/mod.rs](../src/error_handling/mod.rs)，独立入口为 [src/bin/error_handling.rs](../src/bin/error_handling.rs)。
 
 ```bash

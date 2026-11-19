@@ -1,6 +1,6 @@
 # 常见集合学习示例
 
-参考 [Rust 程序设计语言第 8 章](https://rustwiki.org/zh-CN/book/ch08-00-common-collections.html)，示例直接写在源码中，每种集合都有独立的二进制入口。运行时会打印输入、操作过程和结果。
+参考 [Rust 程序设计语言第 8 章](book/ch08-00-common-collections.md)，示例直接写在源码中，每种集合都有独立的二进制入口。运行时会打印输入、操作过程和结果。
 
 ## 源码与运行命令
 

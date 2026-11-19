@@ -1,5 +1,7 @@
 # Rust 的 Package crate 和模块
 
+文档导航：[学习文档索引](README.md) · [本地书籍](book/README.md) · [全书目录](book/SUMMARY.md)。
+
 结合当前 `rust_study` 项目，说明 Package、crate、模块、路径和 `use` 的关系。每个学习模块都有独立的二进制入口，可以单独运行；公共源码由库 crate 组织。
 
 Package 是 Cargo 管理的项目单位；crate 是 Rust 的编译单元；模块组织 crate 内的代码；路径定位具体的项；`use` 将路径对应的名字引入当前作用域。

@@ -1,6 +1,6 @@
 # 自动化测试学习示例
 
-参考 [Rust 程序设计语言第 11 章](https://rustwiki.org/zh-CN/book/ch11-00-testing.html)。本章通过 `cargo test` 执行，不需要额外的二进制入口。
+参考 [Rust 程序设计语言第 11 章](book/ch11-00-testing.md)。本章通过 `cargo test` 执行，不需要额外的二进制入口。
 
 | 位置 | 内容 |
 |---|---|

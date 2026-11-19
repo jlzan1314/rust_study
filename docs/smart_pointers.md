@@ -1,6 +1,6 @@
 # 第 15 章：智能指针
 
-参考 [Rust 程序设计语言第 15 章](https://rustwiki.org/zh-CN/book/ch15-00-smart-pointers.html)。在项目根目录运行：
+参考 [Rust 程序设计语言第 15 章](book/ch15-00-smart-pointers.md)。在项目根目录运行：
 
 ```bash
 cargo run --bin smart_pointers

@@ -1,6 +1,6 @@
 # I/O 项目：构建命令行程序
 
-参考 [Rust Book 第 12 章](https://rustwiki.org/zh-CN/book/ch12-00-an-io-project.html)，实现可以运行的简化版 `minigrep`。在项目根目录执行以下命令。
+参考 [Rust Book 第 12 章](book/ch12-00-an-io-project.md)，实现可以运行的简化版 `minigrep`。在项目根目录执行以下命令。
 
 | 位置 | 内容 |
 |---|---|

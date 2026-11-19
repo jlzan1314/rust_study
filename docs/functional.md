@@ -1,6 +1,6 @@
 # 第 13 章：闭包与迭代器
 
-参考 [Rust Book 第 13 章](https://rustwiki.org/zh-CN/book/ch13-00-functional-features.html)。在项目根目录运行：
+参考 [Rust Book 第 13 章](book/ch13-00-functional-features.md)。在项目根目录运行：
 
 ```bash
 cargo run --bin functional

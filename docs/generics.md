@@ -1,6 +1,6 @@
 # 泛型、trait 和生命周期
 
-参考 [Rust 程序设计语言第 10 章](https://rustwiki.org/zh-CN/book/ch10-00-generics.html)，示例附中文注释，按书中三节组织。
+参考 [Rust 程序设计语言第 10 章](book/ch10-00-generics.md)，示例附中文注释，按书中三节组织。
 
 ```bash
 cargo run --bin generics
