@@ -15,5 +15,8 @@ fn main() {
     println!("泛型与生命周期：cargo run --bin generics");
     println!("编写自动化测试：cargo test --lib testing::tests");
     println!("I/O 命令行项目：cargo run --bin minigrep -- to docs/poem.txt");
+    println!("闭包与迭代器： cargo run --bin functional");
+    println!("智能指针：     cargo run --bin smart_pointers");
+    println!("迭代器版搜索： cargo run --bin minigrep_iter -- to docs/poem.txt");
     println!("库 crate 调用：cargo run --bin math");
 }

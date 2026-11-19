@@ -278,6 +278,9 @@ default-run = "rust_study"
 | 泛型、trait 与生命周期 | `cargo run --bin generics` |
 | 自动化测试 | `cargo test --lib testing::tests` |
 | I/O 命令行项目 | `cargo run --bin minigrep -- to docs/poem.txt` |
+| 闭包与迭代器 | `cargo run --bin functional` |
+| 智能指针 | `cargo run --bin smart_pointers` |
+| 迭代器版搜索 | `cargo run --bin minigrep_iter -- to docs/poem.txt` |
 | 库 crate 调用 | `cargo run --bin math` |
 
 集合示例的源码位置和重点说明见 [常见集合学习示例](collections.md)。
@@ -337,3 +340,6 @@ cargo doc --lib --no-deps
 生成的库文档入口为 `target/doc/rust_study/index.html`。如果想在生成后自动用浏览器打开，可以运行 `cargo doc --lib --no-deps --open`。
 
 源码中的 `//!` 用于说明当前模块或 crate，`///` 用于说明紧随其后的函数等项，普通的 `//` 注释不会作为 API 文档正文展示。
+
+第 13 章示例见 [闭包与迭代器](functional.md)。
+第 15 章示例见 [智能指针](smart_pointers.md)。
