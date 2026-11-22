@@ -9,4 +9,5 @@ fn main() {
     println!("结构体：       cargo run --bin structs");
     println!("枚举与匹配：   cargo run --bin enums_and_matching");
     println!("库 crate 调用：cargo run --bin math");
+    println!("属性过程宏：   cargo run --bin attribute_macro");
 }

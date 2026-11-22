@@ -4,4 +4,8 @@ version = "0.1.0"
 edition = "2024"
 default-run = "rust_study"
 
+[workspace]
+members = ["study_macros"]
+
 [dependencies]
+study_macros = { path = "study_macros" }

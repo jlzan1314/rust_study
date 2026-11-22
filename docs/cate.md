@@ -7,8 +7,11 @@ Package 是 Cargo 管理的项目单位；crate 是 Rust 的编译单元；模�
 ## 当前项目的结构
 
 ```text
-rust_study/                    ← 一个 Package
-├── Cargo.toml                 ← 包名、版本和依赖配置
+rust_study/                    ← 工作区根目录，也是 rust_study Package
+├── Cargo.toml                 ← Package、工作区和依赖配置
+├── study_macros/              ← 定义属性过程宏的独立 Package
+│   ├── Cargo.toml
+│   └── src/lib.rs
 └── src/
     ├── lib.rs                 ← 库 crate 的根模块
     ├── math.rs                ← 库中的 math 模块
@@ -26,10 +29,11 @@ rust_study/                    ← 一个 Package
         ├── object_oriented.rs
         ├── structs.rs
         ├── enums_and_matching.rs
-        └── math.rs
+        ├── math.rs
+        └── attribute_macro.rs
 ```
 
-上面只列出与本说明相关的文件。当前 Package 包含一个库 crate 和八个二进制 crate，其中七个用于学习示例，一个用于展示运行命令：
+上面只列出与本说明相关的文件。`rust_study` Package 包含一个库 crate 和九个二进制 crate，其中八个用于学习示例，一个用于展示运行命令：
 
 ```text
 Package rust_study
@@ -48,12 +52,21 @@ Package rust_study
 ├── 二进制 object_oriented，入口为 src/bin/object_oriented.rs
 ├── 二进制 structs，入口为 src/bin/structs.rs
 ├── 二进制 enums_and_matching，入口为 src/bin/enums_and_matching.rs
-└── 二进制 math，入口为 src/bin/math.rs
-
-每个学习入口只调用对应的库模块，不会顺带运行其他学习模块。
+├── 二进制 math，入口为 src/bin/math.rs
+└── 二进制 attribute_macro，入口为 src/bin/attribute_macro.rs
 ```
 
 `lib.rs` 和 `main.rs` 虽然位于同一个 `src` 目录，却是两个独立 crate 的入口。
+
+## 自定义属性过程宏
+
+Rust 要求过程宏定义在独立的 `proc-macro` crate 中，并由其他 crate 调用。本项目在 `study_macros` 中定义 `#[log_call]`，再通过 `rust_study` 库重新导出。示例入口用 `use rust_study::log_call;` 就能引入它。[Rust Reference](https://doc.rust-lang.org/reference/procedural-macros.html#the-proc_macro_attribute-attribute)
+
+编译器把属性参数和被标注的函数分别传给宏。宏解析函数，在函数体开头插入一条 `println!`，然后把修改后的函数交还给编译器。运行 `cargo run --bin attribute_macro` 可以看到 `#[log_call]` 打印函数名，`#[log_call("显示计算结果")]` 打印指定的标签。
+
+同一示例中的 `#[struct_only]` 用 `syn::ItemStruct` 解析被标注的项。标在 `struct Operands` 上时，宏通过校验并返回结构体定义。标在函数上时，编译器报 `expected struct`。错误用法可以通过 `cargo test -p study_macros --doc` 验证。
+
+`#[aop]` 为 `divide` 添加前置和后置通知。前置通知打印函数名，后置通知打印返回值。宏把原函数体放进闭包，`return` 或 `?` 提前结束闭包后，宏生成的代码仍会执行后置通知。运行 `cargo run --bin attribute_macro` 可以看到返回 `Ok(5)` 和提前返回 `Err("除数不能为零")` 时的日志。
 
 ## Package 和 crate 的区别
 
@@ -257,6 +270,7 @@ default-run = "rust_study"
 | 结构体 | `cargo run --bin structs` |
 | 枚举与模式匹配 | `cargo run --bin enums_and_matching` |
 | 库 crate 调用 | `cargo run --bin math` |
+| 属性过程宏 | `cargo run --bin attribute_macro` |
 
 例如运行库调用示例：
 

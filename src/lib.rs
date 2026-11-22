@@ -13,3 +13,5 @@ pub mod object_oriented;
 pub mod ownership;
 pub mod slice;
 pub mod structs;
+
+pub use study_macros::{aop, log_call, struct_only};
