@@ -23,4 +23,5 @@ fn main() {
     println!("clap 参数解析：cargo run --bin clap_demo -- --help");
     println!("JSON 处理：    cargo run --bin json_demo");
     println!("类型推断：     cargo run --bin type_inference");
+    println!("Tokio 异步：   cargo run --bin tokio_demo");
 }

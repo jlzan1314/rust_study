@@ -21,3 +21,4 @@
 | [clap 参数解析](clap.md) | derive、位置参数、选项、子命令与参数校验 |
 | [JSON 处理](json.md) | serde_json、结构体转换、动态字段和错误处理 |
 | [类型推断](type_inference.md) | 上下文、集合、泛型、闭包、Option/Result 与 `_` |
+| [Tokio 异步示例](../src/bin/tokio_demo.rs) | async/await、join!、spawn、mpsc 与超时 |
