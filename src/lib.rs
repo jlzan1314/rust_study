@@ -15,3 +15,5 @@ pub mod slice;
 pub mod structs;
 
 pub use study_macros::{aop, log_call, struct_only};
+
+pub mod cli;

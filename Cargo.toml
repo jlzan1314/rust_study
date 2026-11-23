@@ -9,3 +9,4 @@ members = ["study_macros"]
 
 [dependencies]
 study_macros = { path = "study_macros" }
+clap = { version = "4", features = ["derive", "env"] }

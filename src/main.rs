@@ -1,6 +1,7 @@
 //! 默认入口只展示运行方式，各学习模块由 src/bin/ 下的独立入口执行。
 
 fn main() {
+    println!("clap 参数解析：cargo run --bin clap_demo -- --help");
     println!("请选择一个学习模块单独运行：\n");
     println!("所有权：       cargo run --bin ownership");
     println!("引用与借用：   cargo run --bin borrowing");
