@@ -7,6 +7,8 @@
 // 统一声明学习模块；二进制只负责调用自己的模块，不重复定义模块。
 // 模块和函数都公开，其他 crate 才能通过完整路径调用。
 pub mod borrowing;
+pub mod cli;
+pub mod json_examples;
 pub mod collections;
 pub mod enums_and_matching;
 pub mod error_handling;
@@ -20,3 +22,4 @@ pub mod slice;
 pub mod smart_pointers;
 pub mod structs;
 pub mod testing;
+pub mod type_inference;

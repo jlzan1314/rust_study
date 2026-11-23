@@ -1,0 +1,6 @@
+{
+  "id": 1,
+  "userName": "小明",
+  "email": "xiaoming@example.com",
+  "skills": ["Rust", "SQL"]
+}

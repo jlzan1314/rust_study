@@ -1,6 +1,7 @@
 //! 默认入口只展示运行方式，各学习模块由 src/bin/ 下的独立入口执行。
 
 fn main() {
+    println!("过程宏演示：   cargo run --bin proc_macro_demo");
     println!("请选择一个学习模块单独运行：\n");
     println!("所有权：       cargo run --bin ownership");
     println!("引用与借用：   cargo run --bin borrowing");
@@ -19,4 +20,7 @@ fn main() {
     println!("智能指针：     cargo run --bin smart_pointers");
     println!("迭代器版搜索： cargo run --bin minigrep_iter -- to docs/poem.txt");
     println!("库 crate 调用：cargo run --bin math");
+    println!("clap 参数解析：cargo run --bin clap_demo -- --help");
+    println!("JSON 处理：    cargo run --bin json_demo");
+    println!("类型推断：     cargo run --bin type_inference");
 }

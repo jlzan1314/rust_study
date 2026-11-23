@@ -18,3 +18,6 @@
 | [I/O 命令行项目](io_project.md) | minigrep 参数、文件读取、搜索与错误输出 |
 | [闭包与迭代器](functional.md) | 闭包捕获、迭代器、搜索重构 |
 | [智能指针](smart_pointers.md) | Box、Deref、Drop、Rc、RefCell、Weak |
+| [clap 参数解析](clap.md) | derive、位置参数、选项、子命令与参数校验 |
+| [JSON 处理](json.md) | serde_json、结构体转换、动态字段和错误处理 |
+| [类型推断](type_inference.md) | 上下文、集合、泛型、闭包、Option/Result 与 `_` |
