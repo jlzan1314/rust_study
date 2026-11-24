@@ -1,0 +1,10 @@
+[package]
+name = "ebpf-monitor-common"
+version = "0.1.0"
+edition = "2024"
+
+[features]
+userspace = ["dep:aya"]
+
+[target.'cfg(target_os = "linux")'.dependencies]
+aya = { version = "=0.13.1", optional = true }

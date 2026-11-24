@@ -22,3 +22,4 @@
 | [JSON 处理](json.md) | serde_json、结构体转换、动态字段和错误处理 |
 | [类型推断](type_inference.md) | 上下文、集合、泛型、闭包、Option/Result 与 `_` |
 | [Tokio 异步示例](../src/bin/tokio_demo.rs) | async/await、join!、spawn、mpsc 与超时 |
+| [eBPF 命令监控](ebpf_monitor.md) | Aya 原生实现，按 UID、命令名统计执行次数、开始时间与耗时 |

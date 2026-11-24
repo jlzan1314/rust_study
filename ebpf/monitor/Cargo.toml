@@ -1,0 +1,23 @@
+[package]
+name = "ebpf-monitor-kernel"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+aya-ebpf = "=0.1.1"
+ebpf-monitor-common = { path = "../common" }
+
+[[bin]]
+name = "ebpf-monitor-kernel"
+path = "src/main.rs"
+test = false
+bench = false
+
+[profile.release]
+debug = 2
+codegen-units = 1
+lto = true
+panic = "abort"
+
+[profile.dev]
+panic = "abort"

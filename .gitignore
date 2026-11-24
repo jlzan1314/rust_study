@@ -1,1 +1,3 @@
 /target/
+/ebpf/monitor/target/
+/ebpf/monitor/*.elf
