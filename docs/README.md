@@ -23,3 +23,4 @@
 | [类型推断](type_inference.md) | 上下文、集合、泛型、闭包、Option/Result 与 `_` |
 | [Tokio 异步示例](../src/bin/tokio_demo.rs) | async/await、join!、spawn、mpsc 与超时 |
 | [eBPF 命令监控](ebpf_monitor.md) | Aya 原生实现，按 UID、命令名统计执行次数、开始时间与耗时 |
+| [Axum 路由测试](../tests/axum_examples.rs) | oneshot 请求、JSON 响应断言、404 和 405；运行 `cargo test --test axum_examples` |
